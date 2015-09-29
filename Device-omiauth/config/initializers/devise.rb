@@ -1,4 +1,5 @@
-# Use this hook to configure devise mailer, warden hooks and so forth.
+require 'omniauth-google-oauth2'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
@@ -259,4 +260,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :google_oauth2,
+    '1006014745197-dsen4i982pq142ko0beaq4q7bnecnm5s.apps.googleusercontent.com',
+    '51SMvSrDap_am3jOnOKUSwHp',
+    { access_type: 'offline', approval_prompt: '' }
 end
